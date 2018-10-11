@@ -1,5 +1,6 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import cgi
+from read_database import get_restaurants
 
 
 class WebServerHandler(BaseHTTPRequestHandler):
