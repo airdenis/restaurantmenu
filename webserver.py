@@ -4,17 +4,6 @@ from read_database import get_restaurants
 from new_restaurant import create_restaurant, reset_name, delete_restaurant
 
 
-#from sqlalchemy import create_engine
-#from sqlalchemy.orm import sessionmaker
-#from database_setup import Base, Restaurant
-
-
-#engine = create_engine('sqlite:///restaurantmenu.db')
-#Base.metadata.bind = engine
-#DBSession = sessionmaker(bind=engine)
-#session = DBSession()
-
-
 class WebServerHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -111,9 +100,6 @@ class WebServerHandler(BaseHTTPRequestHandler):
             if ctype == 'multipart/form-data':
                 fields = cgi.parse_multipart(self.rfile, pdict)
                 messagecontent = fields.get('newRestaurantName')
-                #newRestaurant = Restaurant(name=messagecontent[0])
-                #session.add(newRestaurant)
-                #session.commit()
                 create_restaurant(messagecontent[0])
 
                 self.send_response(301)
@@ -132,29 +118,6 @@ class WebServerHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/html')
             self.send_header('Location', '/restaurants')
             self.end_headers()
-
-            #self.send_response(301)
-            #self.end_headers()
-
-            #ctype, pdict = cgi.parse_header(self.headers.getheader(
-            #    'content-type'
-            #    )
-            #)
-            #if ctype == 'multipart/form-data':
-            #    fields = cgi.parse_multipart(self.rfile, pdict)
-            #    messagecontent = fields.get('output')
-
-            #output = ""
-            #output += "<html><body>"
-            #output += " <h2> okey, how about this: </h2>"
-            #output += "<h1> %s </h1>" % messagecontent[0]
-            #output += '''<form method="POST" enctype="multipart/form-data"
-            #            action="/hello"><h2>What would you like me to say?</h2>
-            #            <input name="output" type="text" >
-            #            <input type="submit" value="Submit"></form>'''
-            #output += "</html></body>"
-            #self.wfile.write(output.encode())
-            #print(output)
 
 
 def main():
