@@ -10,9 +10,9 @@ def get_restaurants():
     session = DBSession()
     restaurants = session.query(Restaurant).all()
 
-    results = []
+    results = {}
     for restaurant in restaurants:
-        results.append(restaurant)
+        results[restaurant.id] = restaurant.name
     return results
 
 
