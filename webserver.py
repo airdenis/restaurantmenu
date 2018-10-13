@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import cgi
 from query_crud import (
