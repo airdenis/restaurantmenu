@@ -1,7 +1,11 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import cgi
-from read_database import get_restaurants
-from new_restaurant import create_restaurant, reset_name, delete_restaurant
+from query_crud import (
+                    create_restaurant,
+                    reset_name,
+                    delete_restaurant,
+                    get_restaurants
+                )
 
 
 class WebServerHandler(BaseHTTPRequestHandler):

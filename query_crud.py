@@ -9,6 +9,15 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
+def get_restaurants():
+    restaurants = session.query(Restaurant).all()
+
+    results = {}
+    for restaurant in restaurants:
+        results[restaurant.id] = restaurant.name
+    return results
+
+
 def create_restaurant(restaurant_name):
     new_restaurant = Restaurant(name=restaurant_name)
     session.add(new_restaurant)
